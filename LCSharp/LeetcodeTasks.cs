@@ -65,7 +65,8 @@ public class LeetcodeTasks
         return s[0].ToString();
     }
 
-    public int CountSubstrings(string s) {
+    public int CountSubstrings(string s)
+    {
         int count = 0;
         for (int i = s.Length - 1; i >= 0; i--)
         {
@@ -96,5 +97,35 @@ public class LeetcodeTasks
         }
 
         return count;
+    }
+    
+    public bool WordBreak(string s, IList<string> wordDict) {
+        List<string> list = wordDict.ToList();
+        int i = 0;
+        while (i < s.Length)
+        {
+            int add = 1;
+            bool isSame = false;
+            for (int j = 0; j < list.Count; j++)
+            {
+                if (i + list[j].Length > s.Length)
+                    continue;
+
+                if (list[j] == s.Substring(i, list[j].Length))
+                {
+                    isSame = true;
+                    add = list[j].Length;
+                    break;
+                }
+            }
+
+            if (!isSame) return false;
+
+            // TODO
+
+            i += add;
+        }
+
+        return true;
     }
 }
