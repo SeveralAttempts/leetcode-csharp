@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-public class LCTests
+public class LengthOfLongestSubstringTests
 {
     [Fact]
     public void LengthOfLongestSubstring_1()
