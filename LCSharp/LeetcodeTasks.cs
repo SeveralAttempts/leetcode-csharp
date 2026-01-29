@@ -64,4 +64,37 @@ public class LeetcodeTasks
 
         return s[0].ToString();
     }
+
+    public int CountSubstrings(string s) {
+        int count = 0;
+        for (int i = s.Length - 1; i >= 0; i--)
+        {
+            for (int j = 0; j + i < s.Length; j++)
+            {
+                if (s[j] == s[i + j])
+                {
+                    bool res = false;
+                    int l = j, r = i + j;
+                    while (l <= r)
+                    {
+                        if (s[l] != s[r])
+                        {
+                            res = false;
+                            break;
+                        }
+                        else
+                        {
+                            res = true;
+                        }
+                        ++l;
+                        --r;
+                    }
+
+                    if (res) count++;
+                }
+            }
+        }
+
+        return count;
+    }
 }
